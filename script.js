@@ -3,7 +3,7 @@ function weatherBYZIP(){
     const weather = fetch("https://api.openweathermap.org/data/2.5/weather?zip="+zip+",us&appid=8314393c09be58a0efed7852aaa25d8c&units=imperial")
     weather.then(function(resp) { return resp.json() }) // Convert data to json
     .then(function(data) {
-        switchBg(data.weather[0].description)
+        // switchBg(data.weather[0].description)
         elementChange(data);
     })
 }
@@ -12,21 +12,22 @@ function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
-function elementChange(data)
-{
+function elementChange(data) {
+    const icon = data.weather[0].icon;
     document.getElementById("city").innerHTML = "Weather in "+data.name;
     document.getElementById("temp").innerHTML = Math.ceil(data.main.temp) +"°F";
+    document.querySelector(".icon").src = "https://openweathermap.org/img/wn/" + icon + "@2x.png"
     document.getElementById("description").innerHTML= capitalizeFirstLetter(data.weather[0].description);
     document.getElementById("humid").innerHTML = "Humidity: "+ data.main.humidity +"%";
     document.getElementById("wind").innerHTML = "Wind Speed: "+ Math.ceil(data.wind.speed)+" MPH"
 
 }
 
-function cToF(celsius) {
-  var cTemp = celsius;
-  var cToFahr = cTemp * 9 / 5 + 32;
-  return cToFahr;
-}
+// function cToF(celsius) {
+//   var cTemp = celsius;
+//   var cToFahr = cTemp * 9 / 5 + 32;
+//   return cToFahr;
+// }
 
 function fToC(fahrenheit) {
     var fTemp = fahrenheit;

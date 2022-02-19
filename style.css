@@ -205,3 +205,8 @@ h1.temp {
 {
     transition: 0.3s ease all;
 }
+
+.icon {
+    margin-left: 5em;
+    margin-bottom: 1em;
+}
