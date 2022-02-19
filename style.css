@@ -4,20 +4,60 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background: paleturquoise;
     font-family: 'Poppins', sans-serif;
+    background: paleturquoise;
+    background-image: url('https://source.unsplash.com/1600x900/?landscape');
+    font-size: 120%;
 }
 
 .container-weather {
-    background: lightpink;
+    background: #000000d0;
     padding: 2em;
     border-radius: 30px;
     width: 100%;
     max-width: 420px;
     margin: 1em;
+    color: white;
 }
 
 .search-icon {
-    width: 1.5em;
-    height: 1.5em;
+    width: 46px;
+    height: 46px;
+    background: rgb(94, 87, 87);
+    color:white;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+input.search-bar {
+    border: none;
+    outline: none;
+    padding: 0.3em 0.5em;
+    border-radius: 18px;
+    background-color: rgb(94, 87, 87);
+    color: white;
+    font-family: inherit;
+    font-size: 105%;
+    width: calc(100% - 100px);
+}
+
+button {
+    margin: 0.5em;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+}
+
+button:hover {
+    background: rgb(121, 116, 116);
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1.temp {
+    margin: 0;
 }
