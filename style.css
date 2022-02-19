@@ -1,0 +1,23 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: paleturquoise;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container-weather {
+    background: lightpink;
+    padding: 2em;
+    border-radius: 30px;
+    width: 100%;
+    max-width: 420px;
+    margin: 1em;
+}
+
+.search-icon {
+    width: 1.5em;
+    height: 1.5em;
+}
