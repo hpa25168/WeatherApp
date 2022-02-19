@@ -6,6 +6,9 @@ body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
     background: paleturquoise;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     background-image: url('https://source.unsplash.com/1600x900/?landscape');
     font-size: 120%;
 }
