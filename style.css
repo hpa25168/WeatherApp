@@ -212,9 +212,12 @@ h1.temp {
 #button-1 .knobs, #button-1 .knobs:before, #button-1 .layer
 {
     transition: 0.3s ease all;
+}
+
 #top-Container {
     margin-bottom: .5em;
 }
+
 #middle-Container{
     /*
     display: flex;
@@ -224,4 +227,9 @@ h1.temp {
 }
 #bottom-Container select{
     width: cal(150%-150px);
+}
+
+.icon {
+    margin-left: 5em;
+    margin-bottom: 1em;
 }
