@@ -21,5 +21,30 @@ function elementChange(data)
     document.getElementById("wind").innerHTML = "Wind Speed: "+ Math.ceil(data.wind.speed)+" MPH"
 
 }
-  
 
+function cToF(celsius) {
+  var cTemp = celsius;
+  var cToFahr = cTemp * 9 / 5 + 32;
+  return cToFahr;
+}
+
+function fToC(fahrenheit) {
+    var fTemp = fahrenheit;
+    var fToCel = (fTemp - 32) * 5 / 9;
+    return fToCel;
+} //ftoC
+
+var fahrenheit = true;
+var savedFaren;
+function fTempChange() {
+    if (fahrenheit == true) {
+        var currTemp = parseInt(document.getElementById("temp").innerHTML, 10);
+        savedFaren = currTemp;
+        var converted = fToC(currTemp);
+        document.getElementById("temp").innerHTML = Math.ceil(converted) + "°C";
+        fahrenheit = false;
+    } else if (fahrenheit == false) {
+        document.getElementById("temp").innerHTML = savedFaren + "°F";
+        fahrenheit = true;
+    }
+}

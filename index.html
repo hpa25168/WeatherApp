@@ -16,7 +16,7 @@
 <body>
     <div class="container-weather">
         <div>
-            <input type="text" class="search-bar" id="search">
+            <input type="text" class="search-bar" id="search" placeholder="Search">
             <button for="search" onclick="weatherBYZIP()" class="search-icon"><i class="fa-solid fa-magnifying-glass fa-lg"></i></button>
         </div>
         <div class="weather">
@@ -27,13 +27,18 @@
             <div id="humid"class="humidity">Humidity: 60%</div>
             <div id="wind" class="wind">Wind Speed: 7 mph</div>
         </div>
-        <div class="settings">
-            <button class="settings-icon"><i class="material-icons">settings</i></button>
+        <div class="switch">
+            <!-- <button class="settings-icon" id="myBtn"><i class="material-icons">settings</i></button> -->
+            <div class="toggle-button-cover">
+                  <div class="button r" id="button-1">
+                    <input type="checkbox" class="checkbox" onclick="fTempChange()">
+                    <div class="knobs"></div>
+                    <div class="layer"></div>
+                  </div>
+            </div>
         </div>
-    </div>
     <sript src="script.js"></sript>
 </body>
-
 
 
 </html>
