@@ -1,3 +1,4 @@
+
 body {
     display: flex;
     justify-content: center;
@@ -32,7 +33,7 @@ body {
     transition: 0.2s ease-in-out;
 }
 
-input.search-bar {
+input.search-bar, select {
     border: none;
     outline: none;
     padding: 0.3em 0.5em;
@@ -42,8 +43,15 @@ input.search-bar {
     font-family: inherit;
     font-size: 105%;
     width: calc(100% - 100px);
+    -ms-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    box-sizing:content-box;
+    
 }
-
+#default{
+    color: grey;
+}
 button {
     margin: 0.5em;
     border-radius: 50%;
@@ -63,4 +71,17 @@ button:hover {
 
 h1.temp {
     margin: 0;
+}
+#top-Container {
+    margin-bottom: .5em;
+}
+#middle-Container{
+    /*
+    display: flex;
+    justify-content: center;*/
+    margin-left: 8em;
+    margin-bottom: .5em;
+}
+#bottom-Container select{
+    width: cal(150%-150px);
 }
