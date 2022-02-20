@@ -37,11 +37,11 @@ function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
-function elementChange(data)
-{
-  if (data.name){
+function elementChange(data) {
+  // If we have called the api, update html
+  if (data.name) {
+    const icon = data.weather[0].icon;
     document.getElementById("city").innerHTML = "Weather in "+data.name;
-  }
     if (fahrenheit)
     {
         document.getElementById("temp").innerHTML = Math.ceil(data.main.temp) +"°F";
@@ -52,16 +52,11 @@ function elementChange(data)
       document.getElementById("temp").innerHTML = cel +"°C";
 
     }
+    document.querySelector(".icon").src = "https://openweathermap.org/img/wn/" + icon + "@2x.png"
     document.getElementById("description").innerHTML= capitalizeFirstLetter(data.weather[0].description);
     document.getElementById("humid").innerHTML = "Humidity: "+ data.main.humidity +"%";
     document.getElementById("wind").innerHTML = "Wind Speed: "+ Math.ceil(data.wind.speed)+" MPH"
-
-}
-
-function cToF(celsius) {
-  var cTemp = celsius;
-  var cToFahr = cTemp * 9 / 5 + 32;
-  return cToFahr;
+  }
 }
 
 function fToC(fahrenheit) {
@@ -73,7 +68,6 @@ function fToC(fahrenheit) {
 function fTempChange() {
     if (fahrenheit == true) {
         var currTemp = parseInt(document.getElementById("temp").innerHTML, 10);
-        console.log(currTemp)
         if (!isNaN(currTemp))
         {
           savedFaren = currTemp;
@@ -88,40 +82,7 @@ function fTempChange() {
         fahrenheit = true;
     }
 }
-/*
-function switchBg(main){
-    switch (main) {
-        case "Snow":
-          document.getElementById("wrapper-bg").style.backgroundImage =
-            "url('https://mdbgo.io/ascensus/mdb-advanced/img/snow.gif')";
-          break;
-        case "Clouds":
-          document.getElementById("wrapper-bg").style.backgroundImage =
-            "url('https://mdbgo.io/ascensus/mdb-advanced/img/clouds.gif')";
-          break;
-        case "Fog":
-          document.getElementById("wrapper-bg").style.backgroundImage =
-            "url('https://mdbgo.io/ascensus/mdb-advanced/img/fog.gif')";
-          break;
-        case "Rain":
-          document.getElementById("wrapper-bg").style.backgroundImage =
-            "url('https://mdbgo.io/ascensus/mdb-advanced/img/rain.gif')";
-          break;
-        case "Clear":
-          document.getElementById("wrapper-bg").style.backgroundImage =
-            "url('https://mdbgo.io/ascensus/mdb-advanced/img/clear.gif')";
-          break;
-        case "Thunderstorm":
-          document.getElementById("wrapper-bg").style.backgroundImage =
-            "url('https://mdbgo.io/ascensus/mdb-advanced/img/thunderstorm.gif')";
-          break;
-        default:
-          document.getElementById("wrapper-bg").style.backgroundImage =
-            "url('https://mdbgo.io/ascensus/mdb-advanced/img/clear.gif')";
-          break;
-    }
-}  
-*/
+
 function zipOrCity()
 {
   zipStr= document.getElementById("search").value;
