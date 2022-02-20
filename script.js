@@ -1,3 +1,7 @@
+// true = using fahrenheit, false = using celsius
+var fahrenheit = true;
+// save the fahrenheit value when displaying celsius, that way, we can convert back without rounding errors
+var savedFaren;
 function weatherBYZIP(){
     zip = document.getElementById("search").value;
     const weather = fetch("https://api.openweathermap.org/data/2.5/weather?zip="+zip+",us&appid=8314393c09be58a0efed7852aaa25d8c&units=imperial")
@@ -38,7 +42,16 @@ function elementChange(data)
   if (data.name){
     document.getElementById("city").innerHTML = "Weather in "+data.name;
   }
-    document.getElementById("temp").innerHTML = Math.ceil(data.main.temp) +"°F";
+    if (fahrenheit)
+    {
+        document.getElementById("temp").innerHTML = Math.ceil(data.main.temp) +"°F";
+    } else 
+    {
+      savedFaren = Math.ceil(data.main.temp);
+      let cel =Math.ceil(fToC(savedFaren))
+      document.getElementById("temp").innerHTML = cel +"°C";
+
+    }
     document.getElementById("description").innerHTML= capitalizeFirstLetter(data.weather[0].description);
     document.getElementById("humid").innerHTML = "Humidity: "+ data.main.humidity +"%";
     document.getElementById("wind").innerHTML = "Wind Speed: "+ Math.ceil(data.wind.speed)+" MPH"
@@ -57,17 +70,21 @@ function fToC(fahrenheit) {
     return fToCel;
 } //ftoC
 
-var fahrenheit = true;
-var savedFaren;
 function fTempChange() {
     if (fahrenheit == true) {
         var currTemp = parseInt(document.getElementById("temp").innerHTML, 10);
-        savedFaren = currTemp;
-        var converted = fToC(currTemp);
-        document.getElementById("temp").innerHTML = Math.ceil(converted) + "°C";
+        console.log(currTemp)
+        if (!isNaN(currTemp))
+        {
+          savedFaren = currTemp;
+          var converted = fToC(currTemp);
+          document.getElementById("temp").innerHTML = Math.ceil(converted) + "°C";
+        }
         fahrenheit = false;
     } else if (fahrenheit == false) {
+      if (!isNaN(savedFaren)){
         document.getElementById("temp").innerHTML = savedFaren + "°F";
+      }
         fahrenheit = true;
     }
 }
@@ -124,3 +141,9 @@ function zipOrCity()
     alert("There is no input")
   }
 }
+
+document.addEventListener("keyup", function(event) {
+  if (event.code === 'Enter' || event.code == 'NumpadEnter') {
+      zipOrCity();
+  }
+});
